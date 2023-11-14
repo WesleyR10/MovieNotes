@@ -1,3 +1,4 @@
+require("dotenv/config")
 require("express-async-errors")
 
 const AppError = require("./utils/AppError")
