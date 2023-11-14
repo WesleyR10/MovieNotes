@@ -4,9 +4,7 @@ const AppError = require("../utils/AppError")
 class MoviesController {
   async create(req, res) {
     const { title, description, rating, tags } = req.body
-    const { user_id } = req.params
-
-    console.log(rating)
+    const user_id = req.user.id
 
     if (!rating) {
       throw new AppError("Gentileza inserir uma avaliação")
@@ -56,7 +54,8 @@ class MoviesController {
   }
 
   async index(req, res) {
-    const { title, user_id, tags } = req.query
+    const { title, tags } = req.query
+    const user_id = req.user.id
 
     let movies;
 
